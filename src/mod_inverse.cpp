@@ -32,11 +32,14 @@ int mod_inverse(int a, int m) {
     int x = 0, y = 0;
     int g = extended_euclid(a, m, x, y);
     
-    if (g != 1) {
-        return -1;  // Inverse does not exist
+    int result = 0;
+    if (g == 1) {
+        result = (x % m + m) % m;
+    } else {
+        result = -1;
     }
     
-    return (x % m + m) % m;  // Ensure positive result
+    return result;  // Ensure positive result
 }
 
 int main() {
